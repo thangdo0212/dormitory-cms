@@ -3,12 +3,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý bài học</h1>
+          <h1>Quản lý sinh viên</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-            <li class="breadcrumb-item active">Quản lý bài học</li>
+            <li class="breadcrumb-item active">Quản lý sinh viên</li>
           </ol>
         </div>
       </div>
@@ -23,33 +23,17 @@
             <div class="card-header">
               <div class="row main-content-header">
                 <div class="col-6">
-                  <h3 class="card-title">Danh sách phòng</h3>
+                  <h3 class="card-title">Danh sách sinh viên</h3>
                 </div>
                 <div class="col-6 main-content-header-right">
                   <span>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Tìm kiếm phòng"
+                      <input type="text" class="form-control" placeholder="Tìm kiếm sinh viên"
                         aria-label="Recipient's username" aria-describedby="basic-addon2">
                       <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button">Tìm kiếm</button>
                       </div>
                     </div>
-                  </span>
-                  <span>
-                    <div class="input-group">
-                      <select class="custom-select" id="inputGroupSelect04"
-                        aria-label="Example select with button addon">
-                        <option selected>Lựa chọn</option>
-                        <option value="1">Phòng trống</option>
-                        <option value="2">Tất cả</option>
-                      </select>
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Xem danh sách</button>
-                      </div>
-                    </div>
-                  </span>
-                  <span>
-                    <button type="button" class="btn btn-outline-info btn-add">+Thêm</button>
                   </span>
                 </div>
               </div>
@@ -59,11 +43,11 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
+                    <th>Tên sinh viên</th>
+                    <th>Mã sinh viên</th>
+                    <th>Khoa</th>
                     <th>Tên phòng</th>
-                    <th>Số người tối đa</th>
-                    <th>Số người hiện tại</th>
-                    <th>Danh sách sinh viên</th>
-                    <th>Trạng thái</th>
+                    <th>Ngày vào</th>
                   </tr>
                 </thead>
                 <tbody>

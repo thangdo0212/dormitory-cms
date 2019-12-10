@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/internal/operators';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { RestResult } from '../response/rest-result';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class StudentService {
 
   constructor(
     private http: HttpClient,
   ) { }
-
 }

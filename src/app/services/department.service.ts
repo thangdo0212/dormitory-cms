@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { RestResult } from '../response/rest-result';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DepartmentService {
 
   constructor(
@@ -14,7 +14,7 @@ export class DepartmentService {
 
   getDepartments(isNullDepartment: boolean): Observable<RestResult> {
     const params: any = {
-        isNullDepartment: isNullDepartment ? isNullDepartment : false
+      isNullDepartment: isNullDepartment ? isNullDepartment : false
     }
     return this.http.get(environment.API_ENDPOINT + '/department', { params })
       .pipe(
@@ -23,10 +23,10 @@ export class DepartmentService {
             return result;
           },
           error => {
-              console.log(error);
+            console.log(error);
           }
         ),
-    );
+      );
   }
 
 }

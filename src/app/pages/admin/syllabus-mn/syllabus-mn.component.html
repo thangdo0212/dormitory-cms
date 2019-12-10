@@ -40,9 +40,8 @@
                 <span>
                   <div class="input-group">
                     <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                        <option selected>Lựa chọn</option>
                         <option value="1">Phòng trống</option>
-                        <option value="2">Tất cả</option>
+                        <option value="2" selected>Tất cả</option>
                       </select>
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary" type="button">Xem danh sách</button>
@@ -68,33 +67,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
-                  <td>Text only</td>
+                <tr *ngFor="let d of departments">
+                  <td>{{d.departmentName}}</td>
+                  <td>{{d.maxPeoples}}</td>
+                  <td>{{d.currentPeoples}}</td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let s of d.students">{{s.studentName}} : {{s.studentCode}}</li>
+                    </ul>
+                  </td>
+                  <td>{{ d.currentPeoples < 8 ? "Trống" : "Đủ" }}</td>
                 </tr>
               </tbody>
             </table>
