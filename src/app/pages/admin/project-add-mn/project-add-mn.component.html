@@ -29,9 +29,9 @@
                   <span>
                     <div class="input-group">
                       <input type="text" class="form-control" placeholder="Tìm kiếm sinh viên"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        aria-label="Recipient's username" aria-describedby="basic-addon2"  [formControl]="studentSearch">
                       <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Tìm kiếm</button>
+                        <button class="btn btn-outline-secondary" type="button" (click)="searchStudent()">Tìm kiếm</button>
                       </div>
                     </div>
                   </span>
@@ -43,7 +43,6 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>''</th>
                     <th>Tên sinh viên</th>
                     <th>Mã sinh viên</th>
                     <th>Khoa</th>
@@ -52,37 +51,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>Misc</td>
-                    <td>Lynx</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>Misc</td>
-                    <td>Lynx</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>Misc</td>
-                    <td>Lynx</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
-                  </tr>
-                  <tr>
-                    <td><input type="checkbox" name="" id=""></td>
-                    <td>Misc</td>
-                    <td>Lynx</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
-                    <td>Text only</td>
+                  <tr *ngFor="let s of students" (click)="selectStudent(s)">
+                    <td>{{s.studentName}}</td>
+                    <td>{{s.studentCode}}</td>
+                    <td>{{s.faculty}}</td>
+                    <td>{{s.departmentName}}</td>
+                    <td>{{s.createdDate}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -94,72 +68,57 @@
         <div class="col-md-5">
           <!-- general form elements -->
           <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Thông tin chung</h3>
+              <button type="submit" class="btn btn-success" style="margin-left: 50px; margin-right: 10px"
+                (click)="openEditModal()" *ngIf="selectedStudent">Chuyển phòng</button>
+              <button type="submit" class="btn btn-danger" style="margin-left: 50px; margin-right: 10px"
+                *ngIf="!selectedStudent" disabled>Chuyển phòng</button>
+              <button type="submit" class="btn btn-success" (click)="openCreateModal()">Thêm sinh viên</button>
+            </div>
+            <!-- /.card-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" [formGroup]="infoForm">
               <div class="card-body">
-                <div class="row ">
-                  <div class="col-12 col-md-6">
-                    <div class="form-group btn-form">
-                      <button type="submit" class="btn btn-outline-success">Chuyển phòng</button>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group btn-form">
-                      <button type="submit" class="btn btn-outline-info">Thêm sinh viên</button>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-12">
-                    <div class="form-group text-form" style="border-bottom: 1px solid #00000073;">
-                      <label for="exampleInputName1">Thông Tin Chung</label>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group text-form">
-                      <label for="exampleInputName1">Tên :</label> <span>Nguyễn Thanh Tùng</span>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group text-form">
-                      <label for="exampleInputName2">Mã sinh viên :</label><span>665105066</span>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group text-form">
-                      <label for="exampleInputName3">Khoa :</label><span>CNTT</span>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group text-form">
-                      <label for="exampleInputName4">Ngày vào :</label><span>16/8/2019</span>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-12">
-                    <div class="form-group text-form">
-                      <label for="exampleInputName4">Phòng :</label>
-                      <select class="form-control" name="" id="">
-                        <option>104</option>
-                        <option>105</option>
-                        <option>106</option>
-                      </select>
-                    </div>
-                  </div>
+                <div class="form-group">
+                  <label for="exampleInputName1">Tên sinh viên</label>
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Tên sinh viên"
+                    formControlName="sName" *ngIf="isEditing">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Tên sinh viên"
+                    formControlName="sName" *ngIf="!isEditing" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputName2">Mã sinh viên</label>
+                  <input type="text" class="form-control" id="exampleInputName2" placeholder="Mã sinh viên"
+                    formControlName="sCode" *ngIf="isEditing">
+                  <input type="text" class="form-control" id="exampleInputName2" placeholder="Mã sinh viên"
+                    formControlName="sCode" *ngIf="!isEditing" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputName3">Khoa</label>
+                  <input type="text" class="form-control" id="exampleInputName3" placeholder="Khoa"
+                    formControlName="sFaculty" *ngIf="isEditing">
+                  <input type="text" class="form-control" id="exampleInputName3" placeholder="Khoa"
+                    formControlName="sFaculty" *ngIf="!isEditing" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputName4" *ngIf="!isEditing">Phòng</label>
+                  <input type="text" class="form-control" id="exampleInputName4" placeholder="Phòng"
+                    formControlName="sDepartment" *ngIf="!isEditing" disabled>
+                  <label for="exampleInputName4" *ngIf="isEditing || isCreating">Phòng trống</label>
+                  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
+                    formControlName="sDepartment" *ngIf="isEditing">
+                    <option *ngFor="let d of departments" [ngValue]="d">{{d.departmentName}}</option>
+                  </select>
                 </div>
               </div>
               <!-- /.card-body -->
-
-              <div class="card-footer btn-footer">
-                <div class="row">
-                  <div class="col-12 col-md-6">
-                    <div class="form-group btn-form">
-                      <button type="button" class="btn btn-success">Lưu</button>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group btn-form">
-                      <button type="button" class="btn btn-danger">Hủy</button>
-                    </div>
-                  </div>
-                </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary" *ngIf="selectedStudent && !isEditing && !isCreating" (click)="deleteStudent()">Xóa</button>
+                <button type="submit" class="btn btn-primary" *ngIf="isEditing" (click)="movingDepartment()">Lưu</button>
+                <button type="submit" class="btn btn-primary" *ngIf="isCreating" (click)="createStudent()">Tạo</button>
+                <button type="submit" class="btn btn-danger" *ngIf="isEditing || isCreating" (click)="cancle()"
+                  style="margin-left: 5px">Hủy</button>
               </div>
             </form>
           </div>

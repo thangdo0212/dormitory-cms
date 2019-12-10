@@ -30,27 +30,32 @@
               <div class="col-8 main-content-header-right">
                 <span>
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm phòng"
-                      aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên"
+                      aria-label="Recipient's username" aria-describedby="basic-addon2"
+                      [formControl]="departmentSearch">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">Tìm kiếm</button>
+                      <button class="btn btn-outline-secondary" type="button" (click)="searchDepartment()">Tìm
+                        kiếm</button>
                     </div>
                   </div>
                 </span>
                 <span>
                   <div class="input-group">
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                      <option value="1">Phòng trống</option>
-                      <option value="2" selected>Tất cả</option>
+                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
+                      [formControl]="departmentType">
+                      <option value="true">Phòng trống</option>
+                      <option value="false" selected>Tất cả</option>
                     </select>
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">Xem danh sách</button>
+                      <button class="btn btn-outline-secondary" type="button" (click)="refreshListDepartment()">Xem danh
+                        sách</button>
                     </div>
                   </div>
                 </span>
                 <span>
                   <!-- Button trigger modal -->
-                  <button  type="button" class="btn btn-outline-info btn-add" data-toggle="modal" data-target="#exampleModal">
+                  <button type="button" class="btn btn-outline-info btn-add" data-toggle="modal"
+                    data-target="#exampleModal">
                     +Thêm
                   </button>
                 </span>
@@ -75,11 +80,13 @@
                   <td>{{d.maxPeoples}}</td>
                   <td>{{d.currentPeoples}}</td>
                   <td>
-                    <ul style="list-style: none;">
-                      <li *ngFor="let s of d.students">- {{s.studentName}} : {{s.studentCode}}</li>
+                    <ul>
+                      <li *ngFor="let s of d.students"
+                        style="border-bottom: 1px solid gray; list-style: none; width: 70%;">{{s.studentName}} :
+                        {{s.studentCode}}</li>
                     </ul>
                   </td>
-                  <td>{{ d.currentPeoples < 8 ? "Trống" : "Đủ" }}</td>
+                  <td>{{ d.currentPeoples < 8 ? "Còn chỗ" : "Đủ" }}</td>
                 </tr>
               </tbody>
             </table>
@@ -110,13 +117,13 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="">Tên phòng</label>
-          <input type="text" name="" id="" class="form-control" placeholder="Nhập tên phòng" aria-describedby="helpId">
+          <input type="text" name="" id="" class="form-control" placeholder="Nhập tên phòng" aria-describedby="helpId" [formControl]="departmentControl">
           <!-- <small id="helpId" class="text-muted">Help text</small> -->
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-primary">Lưu</button>
+        <button type="button" class="btn btn-primary" (click)="createDepartment()">Lưu</button>
       </div>
     </div>
   </div>
