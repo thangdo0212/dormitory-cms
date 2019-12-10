@@ -29,3 +29,16 @@
 .note-editor.note-frame {
   border: 1px solid rgba(0, 0, 0, 0.14);
 }
+
+.btn-form{
+  text-align: center;
+}
+.btn-form button{
+  width: 50%;
+}
+.text-form span{
+  margin-left: 20px;
+}
+.btn-footer .form-group {
+  margin-bottom: 0;
+}

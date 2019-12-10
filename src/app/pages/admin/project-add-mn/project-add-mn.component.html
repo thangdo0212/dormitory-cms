@@ -18,7 +18,7 @@
     <div class="container-fluid">
       <div class="row">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div class="card">
             <div class="card-header">
               <div class="row main-content-header">
@@ -43,6 +43,7 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
+                    <th>''</th>
                     <th>Tên sinh viên</th>
                     <th>Mã sinh viên</th>
                     <th>Khoa</th>
@@ -52,6 +53,7 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td><input type="checkbox" name="" id=""></td>
                     <td>Misc</td>
                     <td>Lynx</td>
                     <td>Text only</td>
@@ -59,6 +61,7 @@
                     <td>Text only</td>
                   </tr>
                   <tr>
+                    <td><input type="checkbox" name="" id=""></td>
                     <td>Misc</td>
                     <td>Lynx</td>
                     <td>Text only</td>
@@ -66,6 +69,7 @@
                     <td>Text only</td>
                   </tr>
                   <tr>
+                    <td><input type="checkbox" name="" id=""></td>
                     <td>Misc</td>
                     <td>Lynx</td>
                     <td>Text only</td>
@@ -73,6 +77,7 @@
                     <td>Text only</td>
                   </tr>
                   <tr>
+                    <td><input type="checkbox" name="" id=""></td>
                     <td>Misc</td>
                     <td>Lynx</td>
                     <td>Text only</td>
@@ -86,37 +91,75 @@
           </div>
           <!-- /.card -->
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
           <!-- general form elements -->
           <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Thông tin bài học</h3>
-            </div>
-            <!-- /.card-header -->
             <!-- form start -->
             <form role="form">
               <div class="card-body">
-                <div class="form-group">
-                  <label for="exampleInputName1">Tên bài học</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Tên bài học">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputName2">Bài giảng</label>
-                  <input type="text" class="form-control" id="exampleInputName2" placeholder="Bài giảng 1">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputName3">Loại bài học</label>
-                  <input type="text" class="form-control" id="exampleInputName3" placeholder="Trắc nghiệm">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputName4">Nội dung bài học</label>
-                  <textarea class="form-control" name="" id="" rows="3" placeholder="Nhập ..."></textarea>
+                <div class="row ">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group btn-form">
+                      <button type="submit" class="btn btn-outline-success">Chuyển phòng</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group btn-form">
+                      <button type="submit" class="btn btn-outline-info">Thêm sinh viên</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <div class="form-group text-form" style="border-bottom: 1px solid #00000073;">
+                      <label for="exampleInputName1">Thông Tin Chung</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group text-form">
+                      <label for="exampleInputName1">Tên :</label> <span>Nguyễn Thanh Tùng</span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group text-form">
+                      <label for="exampleInputName2">Mã sinh viên :</label><span>665105066</span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group text-form">
+                      <label for="exampleInputName3">Khoa :</label><span>CNTT</span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group text-form">
+                      <label for="exampleInputName4">Ngày vào :</label><span>16/8/2019</span>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <div class="form-group text-form">
+                      <label for="exampleInputName4">Phòng :</label>
+                      <select class="form-control" name="" id="">
+                        <option>104</option>
+                        <option>105</option>
+                        <option>106</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
               <!-- /.card-body -->
 
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="card-footer btn-footer">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group btn-form">
+                      <button type="button" class="btn btn-success">Lưu</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group btn-form">
+                      <button type="button" class="btn btn-danger">Hủy</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
