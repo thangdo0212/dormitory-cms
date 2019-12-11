@@ -16,8 +16,8 @@ export class ProjectAddMnComponent implements OnInit {
   students: Student[];
   student: Student;
   departments: Department[];
-  isEditing: boolean = false;
-  isCreating: boolean = false;
+  isEditing = false;
+  isCreating = false;
   selectedStudent: Student;
   infoForm: FormGroup;
   studentSearch: FormControl = new FormControl();
@@ -44,17 +44,17 @@ export class ProjectAddMnComponent implements OnInit {
   loadDepartments() {
     this.departmentService.getDepartments(true).subscribe(
       result => {
-        if(result && result.data) {
+        if (result && result.data) {
           this.departments = result.data;
+        }
       }
-    }
     );
-  } 
+  }
 
   loadStudents() {
     this.studentService.getAllStudent().subscribe(
       result => {
-        if(result && result.data) {
+        if (result && result.data) {
           this.students = result.data;
         } else {
           this.students = [];
@@ -64,11 +64,11 @@ export class ProjectAddMnComponent implements OnInit {
   }
 
   selectStudent(student: Student) {
-    if(!student) {
+    if (!student) {
       return;
     }
 
-    this.selectedStudent = student; 
+    this.selectedStudent = student;
     this.infoForm.get('sName').setValue(this.selectedStudent.studentName);
     this.infoForm.get('sCode').setValue(this.selectedStudent.studentCode);
     this.infoForm.get('sFaculty').setValue(this.selectedStudent.faculty);
@@ -78,7 +78,7 @@ export class ProjectAddMnComponent implements OnInit {
   searchStudent() {
     this.studentService.searchStudent(this.studentSearch.value).subscribe(
       result => {
-        if(result && result.data) {
+        if (result && result.data) {
           this.students = [];
           this.student = result.data;
           this.students.push(this.student);
@@ -92,15 +92,13 @@ export class ProjectAddMnComponent implements OnInit {
   createStudent() {
     const self = this.infoForm.value;
     const request = new StudentRequest();
-    request.studentName = self.sName
-    request.studentCode = self.sCode
-    request.faculty = self.sFaculty;
-    request.departmentName = this.infoForm.value.sDepartment.departmentName
-    request.departmentId = this.infoForm.value.sDepartment.id
+    request.studentName = self.sName;
+    request.studentCode = self.sCode;
+    request.faculty = self.faculty;
+    request.departmentName = this.infoForm.value.sDepartment.departmentName;
+    request.departmentId = this.infoForm.value.sDepartment.id;
     this.studentService.createStudent(request).subscribe(
       result => {
-        this.isEditing = false;
-        this.isCreating = false;
         this.loadStudents();
         alert("Tạo sinh viên thành công");
       },
@@ -131,8 +129,8 @@ export class ProjectAddMnComponent implements OnInit {
     request.studentCode = this.selectedStudent.studentCode;
     request.faculty = this.selectedStudent.faculty;
     request.createDate = this.selectedStudent.createDate;
-    request.departmentName = this.infoForm.value.sDepartment.departmentName
-    request.departmentId = this.infoForm.value.sDepartment.id
+    request.departmentName = this.infoForm.value.sDepartment.departmentName;
+    request.departmentId = this.infoForm.value.sDepartment.id;
     this.studentService.updateStudent(request).subscribe(
       result => {
         this.isEditing = false;
