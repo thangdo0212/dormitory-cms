@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/services/student.service';
 import { Student } from 'src/app/response/student-dto';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DepartmentService } from 'src/app/services/department.service';
 import { Department } from 'src/app/response/department-dto';
 import { StudentRequest } from 'src/app/requests/student-request';
@@ -34,10 +34,10 @@ export class ProjectAddMnComponent implements OnInit {
 
   initForm() {
     this.infoForm = new FormGroup({
-      sName: new FormControl(''),
-      sCode: new FormControl(''),
-      sFaculty: new FormControl(''),
-      sDepartment: new FormControl('')
+      sName: new FormControl('', Validators.required),
+      sCode: new FormControl('', Validators.required),
+      sFaculty: new FormControl('', Validators.required),
+      sDepartment: new FormControl('', Validators.required)
     });
   }
 
@@ -94,16 +94,18 @@ export class ProjectAddMnComponent implements OnInit {
     const request = new StudentRequest();
     request.studentName = self.sName
     request.studentCode = self.sCode
-    request.faculty = self.faculty;
+    request.faculty = self.sFaculty;
     request.departmentName = this.infoForm.value.sDepartment.departmentName
     request.departmentId = this.infoForm.value.sDepartment.id
     this.studentService.createStudent(request).subscribe(
       result => {
-        console.log("success");
+        this.isEditing = false;
+        this.isCreating = false;
         this.loadStudents();
+        alert("Tạo sinh viên thành công");
       },
       error => {
-        console.log("error" + error);
+        alert("Lỗi hệ thống không xác định");
       }
     );
   }
@@ -111,11 +113,14 @@ export class ProjectAddMnComponent implements OnInit {
   deleteStudent() {
     this.studentService.deleteStudent(this.selectedStudent.studentCode).subscribe(
       result => {
-        console.log("success");
+        this.isCreating = false;
+        this.isEditing = false;
+        this.initForm();
         this.loadStudents();
+        alert("Xóa sinh viên thành công");
       },
       error => {
-        console.log("error " + error);
+        alert("Lỗi hệ thống không xác định");
       }
     );
   }
@@ -130,11 +135,13 @@ export class ProjectAddMnComponent implements OnInit {
     request.departmentId = this.infoForm.value.sDepartment.id
     this.studentService.updateStudent(request).subscribe(
       result => {
-        console.log("success");
+        this.isEditing = false;
+        this.isCreating = false;
+        alert("Chuyển phòng cho sinh viên thành công");
         this.loadStudents();
       },
       error => {
-        console.log("error" + error);
+        alert("Lỗi hệ thống không xác định");
       }
     );
   }
@@ -146,6 +153,7 @@ export class ProjectAddMnComponent implements OnInit {
   }
 
   openCreateModal() {
+    this.loadDepartments();
     this.isCreating = true;
     this.isEditing = false;
     this.initForm();

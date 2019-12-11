@@ -83,31 +83,31 @@
                 <div class="form-group">
                   <label for="exampleInputName1">Tên sinh viên</label>
                   <input type="text" class="form-control" id="exampleInputName1" placeholder="Tên sinh viên"
-                    formControlName="sName" *ngIf="isEditing">
+                    formControlName="sName" *ngIf="isEditing || isCreating">
                   <input type="text" class="form-control" id="exampleInputName1" placeholder="Tên sinh viên"
-                    formControlName="sName" *ngIf="!isEditing" disabled>
+                    formControlName="sName" *ngIf="!isEditing && !isCreating" disabled>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputName2">Mã sinh viên</label>
                   <input type="text" class="form-control" id="exampleInputName2" placeholder="Mã sinh viên"
-                    formControlName="sCode" *ngIf="isEditing">
+                    formControlName="sCode" *ngIf="isEditing || isCreating">
                   <input type="text" class="form-control" id="exampleInputName2" placeholder="Mã sinh viên"
-                    formControlName="sCode" *ngIf="!isEditing" disabled>
+                    formControlName="sCode" *ngIf="!isEditing && !isCreating" disabled>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputName3">Khoa</label>
                   <input type="text" class="form-control" id="exampleInputName3" placeholder="Khoa"
-                    formControlName="sFaculty" *ngIf="isEditing">
+                    formControlName="sFaculty" *ngIf="isEditing || isCreating">
                   <input type="text" class="form-control" id="exampleInputName3" placeholder="Khoa"
-                    formControlName="sFaculty" *ngIf="!isEditing" disabled>
+                    formControlName="sFaculty" *ngIf="!isEditing && !isCreating" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputName4" *ngIf="!isEditing">Phòng</label>
+                  <label for="exampleInputName4" *ngIf="!isEditing && !isCreating">Phòng</label>
                   <input type="text" class="form-control" id="exampleInputName4" placeholder="Phòng"
-                    formControlName="sDepartment" *ngIf="!isEditing" disabled>
+                    formControlName="sDepartment" *ngIf="!isEditing && !isCreating" disabled>
                   <label for="exampleInputName4" *ngIf="isEditing || isCreating">Phòng trống</label>
                   <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
-                    formControlName="sDepartment" *ngIf="isEditing">
+                    formControlName="sDepartment" *ngIf="isEditing || isCreating">
                     <option *ngFor="let d of departments" [ngValue]="d">{{d.departmentName}}</option>
                   </select>
                 </div>
