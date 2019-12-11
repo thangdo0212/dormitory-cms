@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import './js/adminlte';
 @Component({
   selector: 'app-secure',
   templateUrl: './admin.component.html',

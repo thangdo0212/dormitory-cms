@@ -8,15 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MasterComponent } from './layouts/master/master.component';
 import { AdminComponent } from './layouts/admin/admin.component';
-import { MasterModule } from './layouts/master/master.module';
 import { AdminModule } from './layouts/admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MasterComponent,
     AdminComponent
   ],
   imports: [
@@ -26,7 +23,6 @@ import { AdminModule } from './layouts/admin/admin.module';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    MasterModule,
     AdminModule
   ],
   providers: [Guard],
