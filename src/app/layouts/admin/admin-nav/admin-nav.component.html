@@ -1,56 +1,32 @@
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-  <!-- Brand Logo -->
-  <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="brand-link">
-    <span class="brand-text font-weight-light">Admin</span>
-  </a>
-
-  <!-- Sidebar -->
-  <div class="sidebar">
-
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview menu-open">
-          <a class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Quản Lý Phòng
-              <i class="right fas fa-angle-left"></i>
-            </p>
+<div class="box-header">
+  <div class="nav-side-menu">
+    <div class="brand">Admin</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+      <ul id="menu-content" class="menu-content collapse out">
+        <li class="active">
+          <a href="#">
+            <i class="fas fa-money-check"></i> Bảng Điều Khiển
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['router-link-active']" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Phòng</p>
-              </a>
-            </li>
-          </ul>
         </li>
-        <li class="nav-item has-treeview">
-          <a class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>
-              Quản lý Sinh Viên
-              <i class="fas fa-angle-left right"></i>
-              <span class="badge badge-info right">6</span>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a [routerLink]="['/admin/lesson']" [routerLinkActive]="['router-link-active']" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Sinh Viên</p>
-              </a>
-            </li>
-          </ul>
+
+        <li data-toggle="collapse" data-target="#products" class="collapsed">
+          <a><i class="fas fa-person-booth"></i>Quản lý phòng <i class="fas fa-angle-down"></i></a>
         </li>
+        <ul class="sub-menu collapse" id="products">
+          <li><a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['router-link-active']"><i
+                class="fas fa-angle-right"></i>Phòng</a></li>
+        </ul>
+
+
+        <li data-toggle="collapse" data-target="#user" class="collapsed">
+          <a><i class="fas fa-user-tag"></i> Quản lý nhân viên <i class="fas fa-angle-down"></i></a>
+        </li>
+        <ul class="sub-menu collapse" id="user">
+          <li><a [routerLink]="['/admin/lesson']" [routerLinkActive]="['router-link-active']"><i
+                class="fas fa-angle-right"></i>Nhân viên</a></li>
+        </ul>
       </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
+    </div>
   </div>
-  <!-- /.sidebar -->
-</aside>
+</div>

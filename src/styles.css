@@ -686,3 +686,6 @@ body {
     position: unset;
   }
 }
+.content-wrapper{
+  margin-left: 300px;
+}
